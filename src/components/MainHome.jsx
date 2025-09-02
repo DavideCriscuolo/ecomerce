@@ -64,7 +64,7 @@ export default function MainHome() {
             <h3 className="mb-3">Accopiate Vincenti</h3>
             <div className="row row-cols-1 row-cols-md-3 ">
               <div className="col">
-                <div class="card-sm ">
+                <div class="card ">
                   <img
                     class="card-img-top"
                     src="https://picsum.photos/seed/picsum/200/300"

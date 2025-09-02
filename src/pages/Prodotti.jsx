@@ -1,7 +1,9 @@
+import MainProdotti from "../components/MainProdotti";
+
 export default function Prodotti() {
   return (
     <>
-      <h1>Prodotti</h1>
+      <MainProdotti></MainProdotti>
     </>
   );
 }

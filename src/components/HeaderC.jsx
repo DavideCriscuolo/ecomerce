@@ -36,9 +36,9 @@ export default function HeaderC() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <NavLink className="nav-link" to={"/prodotti"}>
                     Prodotti
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>

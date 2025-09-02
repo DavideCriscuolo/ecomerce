@@ -1,4 +1,16 @@
+import React, { useState, useEffect } from "react";
 export default function MainProdotti() {
+  const [prodotti, setProdotti] = useState([]);
+
+  const urlprodotti = import.meta.env.VITE_URL_PRODOTTI;
+
+  function gnrProdotti() {
+    fetch(urlprodotti)
+      .then((response) => response.json())
+      .then((data) => setProdotti(data));
+  }
+  useEffect(gnrProdotti, []);
+
   return (
     <>
       <main className="my-5">
@@ -6,43 +18,16 @@ export default function MainProdotti() {
           <h2 className="text-center my-5">I nostri prodotti</h2>
           <div className="row">
             <div className="col">
-              <div class="card">
-                <img
-                  class="card-img-top"
-                  src="https://picsum.photos/seed/picsum/200/300"
-                  alt="Title"
-                />
-                <div class="card-body">
-                  <h4 class="card-title">Title</h4>
-                  <p class="card-text">Text</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div class="card">
-                <img
-                  class="card-img-top w-100"
-                  src="https://picsum.photos/seed/picsum/200/300"
-                  alt="Title"
-                />
-                <div class="card-body">
-                  <h4 class="card-title">Title</h4>
-                  <p class="card-text">Text</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div class="card">
-                <img
-                  class="card-img-top"
-                  src="https://picsum.photos/seed/picsum/200/300"
-                  alt="Title"
-                />
-                <div class="card-body">
-                  <h4 class="card-title">Title</h4>
-                  <p class="card-text">Text</p>
-                </div>
-              </div>
+              {prodotti.map((pc) => {
+                return (
+                  <div className="card">
+                    <div className="card-body">
+                      <h4 className="card-title">{pc.name}</h4>
+                      <p className="card-text">{pc.descrizione}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

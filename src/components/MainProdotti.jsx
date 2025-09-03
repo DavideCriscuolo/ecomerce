@@ -23,7 +23,7 @@ export default function MainProdotti() {
                 <div key={pc.id} className="col">
                   <div className="card h-100">
                     <div className="card-body">
-                      <Link to={`/prodotti/${pc.id}`}>
+                      <Link to={`/prodotto/${pc.id}`}>
                         {" "}
                         <img
                           className="card-img-top"

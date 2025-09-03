@@ -1,4 +1,19 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 export default function MainHome() {
+  const [bestSellers, setBestSellers] = useState([]);
+  const url = import.meta.env.VITE_URL_BEST_SELLERS;
+
+  function gnrBestSellers() {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setBestSellers(data);
+      });
+  }
+  useEffect(gnrBestSellers, []);
   return (
     <>
       <main>
@@ -14,45 +29,25 @@ export default function MainHome() {
           <section className="my-5 text-center">
             <h3 className="mb-3">I nostri prodotti piu venduti</h3>
             <div className="row row-cols-1 row-cols-md-3">
-              <div className="col">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="https://picsum.photos/seed/picsum/200/300"
-                    alt="Title"
-                  />
-                  <div class="card-body">
-                    <h4 class="card-title">Title</h4>
-                    <p class="card-text">Text</p>
+              {bestSellers.map((pc) => {
+                return (
+                  <div key={pc.id} className="col">
+                    <div className="card h-100">
+                      <Link to={`/prodotto/${pc.id}`}>
+                        <img
+                          className="card-img-top p-3"
+                          src={pc.img}
+                          alt="Title"
+                        />
+                      </Link>
+                      <div className="card-body">
+                        <h4 className="card-title">{pc.nome}</h4>
+                        <p className="card-text">{pc.descrizione}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="col">
-                <div class="card">
-                  <img
-                    class="card-img-top w-100"
-                    src="https://picsum.photos/seed/picsum/200/300"
-                    alt="Title"
-                  />
-                  <div class="card-body">
-                    <h4 class="card-title">Title</h4>
-                    <p class="card-text">Text</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col">
-                <div class="card">
-                  <img
-                    class="card-img-top"
-                    src="https://picsum.photos/seed/picsum/200/300"
-                    alt="Title"
-                  />
-                  <div class="card-body">
-                    <h4 class="card-title">Title</h4>
-                    <p class="card-text">Text</p>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </section>
         </div>

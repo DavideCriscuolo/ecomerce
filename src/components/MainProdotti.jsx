@@ -16,19 +16,20 @@ export default function MainProdotti() {
       <main className="my-5">
         <div className="container">
           <h2 className="text-center my-5">I nostri prodotti</h2>
-          <div className="row">
-            <div className="col">
-              {prodotti.map((pc) => {
-                return (
-                  <div className="card">
+          <div className="row row-cols-1 row-cols-md-3 g-3 ">
+            {prodotti.map((pc) => {
+              return (
+                <div className="col">
+                  <div className="card h-100">
                     <div className="card-body">
-                      <h4 className="card-title">{pc.name}</h4>
+                      <img className="card-img-top" src={pc.img} alt="" />
+                      <h4 className="card-title">{pc.nome}</h4>
                       <p className="card-text">{pc.descrizione}</p>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </main>

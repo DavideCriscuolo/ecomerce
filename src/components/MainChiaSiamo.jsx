@@ -1,3 +1,4 @@
+import "./../scss/MainProdotti.scss";
 export default function MainChiSiamo() {
   return (
     <>

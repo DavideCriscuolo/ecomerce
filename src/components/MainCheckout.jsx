@@ -13,6 +13,19 @@ export default function MainCheckout() {
   }
   useEffect(gnrProdotto, []);
 
+  function effetuaOrdine() {
+    const url = import.meta.env.VITE_URL_ORDINE + prodotto.id;
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }
+
   return (
     <>
       <main className="my-5">
@@ -24,8 +37,50 @@ export default function MainCheckout() {
             </div>
             <div className="col">
               <h3>Dati per il pagamaneto</h3>
+              <div class="mb-3">
+                <label for="" class="form-label">
+                  Nome
+                </label>
+                <input
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  class="form-control"
+                  placeholder=""
+                  aria-describedby="helpId"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label">
+                  Nome
+                </label>
+                <input
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  class="form-control"
+                  placeholder=""
+                  aria-describedby="helpId"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label">
+                  Nome
+                </label>
+                <input
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  class="form-control"
+                  placeholder=""
+                  aria-describedby="helpId"
+                />
+              </div>
             </div>
           </div>
+          <button onClick={effetuaOrdine} className="btn btn-secondary">
+            Paga
+          </button>
         </div>
       </main>
     </>

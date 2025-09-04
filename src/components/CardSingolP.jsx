@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function CardSingolP({ pc }) {
   return (
     <div className="card h-100 mb-3">

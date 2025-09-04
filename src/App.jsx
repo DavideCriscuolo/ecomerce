@@ -4,6 +4,7 @@ import DefaultLayout from "./layout/DefaultLayout";
 import ChiSiamo from "./pages/ChiSiamo";
 import Prodotti from "./pages/Prodotti";
 import ProdottoSingolo from "./pages/ProdottoSingolo";
+import Checkout from "./pages/Checkout";
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
             <Route path="/chi-siamo" element={<ChiSiamo />} />
             <Route path="/prodotti" element={<Prodotti />} />
             <Route path="/prodotto/:id" element={<ProdottoSingolo />}></Route>
+            <Route path="/checkout/:id" element={<Checkout />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

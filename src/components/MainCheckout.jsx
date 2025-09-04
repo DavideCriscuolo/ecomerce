@@ -1,8 +1,7 @@
+import CardSingolP from "./CardSingolP";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import CardSingolP from "./CardSingolP";
-import { Link } from "react-router-dom";
-export default function MainSingoloProd() {
+export default function MainCheckout() {
   const [prodotto, setProdotto] = useState({});
   const id = useParams();
 
@@ -14,17 +13,17 @@ export default function MainSingoloProd() {
   }
   useEffect(gnrProdotto, []);
 
-  console.log(prodotto, url);
-
   return (
     <>
       <main className="my-5">
+        <h2 className="text-center">Checkout</h2>
         <div className="container">
-          <h2 className="text-center my-5">Prodotto singolo</h2>
           <div className="row">
             <div className="col">
-              <CardSingolP pc={prodotto} key={prodotto.id} />
-              <Link to={`/checkout/${prodotto.id}`}>Vai al checkout</Link>
+              <CardSingolP pc={prodotto} key={prodotto.id}></CardSingolP>
+            </div>
+            <div className="col">
+              <h3>Dati per il pagamaneto</h3>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ export default function FormC(props) {
   const prezzo_tot = props.prodotto.prezzo;
 
   formData.prezzo_tot = prezzo_tot;
-  console.log(formData);
+
   function effetuaOrdine(e) {
     e.preventDefault();
     const url = import.meta.env.VITE_URL_ORDINE + props.prodotto.id;

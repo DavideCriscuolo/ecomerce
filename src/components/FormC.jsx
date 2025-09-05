@@ -1,5 +1,17 @@
 import { useState } from "react";
 export default function FormC(props) {
+  const [formData, setFormData] = useState({
+    prezzo_tot: 0,
+    nome: "",
+    cognome: "",
+    email: "",
+    indirizzo: "",
+  });
+
+  const prezzo_tot = props.prodotto.prezzo;
+
+  formData.prezzo_tot = prezzo_tot;
+  console.log(formData);
   function effetuaOrdine(e) {
     e.preventDefault();
     const url = import.meta.env.VITE_URL_ORDINE + props.prodotto.id;
@@ -15,7 +27,7 @@ export default function FormC(props) {
         console.log(formData);
         alert("ordine effettuato");
         setFormData({
-          prezzo_tot: props.prodotto.prezzo,
+          prezzo_tot: 0,
           nome: "",
           cognome: "",
           email: "",
@@ -24,13 +36,6 @@ export default function FormC(props) {
       }
     });
   }
-  const [formData, setFormData] = useState({
-    prezzo_tot: props.prodotto.prezzo,
-    nome: "",
-    cognome: "",
-    email: "",
-    indirizzo: "",
-  });
 
   return (
     <>

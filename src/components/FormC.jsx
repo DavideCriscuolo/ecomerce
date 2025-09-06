@@ -110,7 +110,7 @@ export default function FormC(props) {
         </div>
         <div className="mb-3">
           <h4>Totale: </h4>
-          <p> {props.prodotto.prezzo} Euro </p>
+          <p> {props.prezzo_totale} Euro </p>
         </div>
         <button type="submit" className="btn btn-secondary">
           Paga

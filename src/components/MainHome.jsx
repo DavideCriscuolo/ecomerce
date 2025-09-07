@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CardProdotti from "./CardProdotti";
+import "./../scss/MainHome.scss";
 
 export default function MainHome() {
   const [bestSellers, setBestSellers] = useState([]);
@@ -37,7 +38,7 @@ export default function MainHome() {
           </section>
         </div>
         <div className="contanier-fluid border-1">
-          <div>imaggine</div>
+          <div className="pattern"></div>
         </div>
         <div className="container">
           <section className="my-5 text-center">

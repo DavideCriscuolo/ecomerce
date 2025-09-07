@@ -6,7 +6,7 @@ export default function HeaderC() {
       <header className="p-3 ">
         <nav className="navbar navbar-expand-sm ">
           <div className="container">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand " href="#">
               Elo Boost Pc
             </a>
             <button

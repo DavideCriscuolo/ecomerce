@@ -1,0 +1,23 @@
+body {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.card {
+  border: none;
+}
+.border_purple:hover {
+  transform: scale(1.05);
+  transition: transform 0.8s ease-in-out;
+  border: 1px solid #8820ff;
+}
+
+.btn_purple {
+  background-color: #000000;
+  color: white;
+}
+
+.btn_purple:hover {
+  background-color: #8820ff;
+  color: white;
+}

@@ -3,6 +3,7 @@ import { useLocalStorage } from "react-use";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import "./../scss/CartC.scss";
 export default function CartC(props) {
   const [aggiunto, setAggiunto] = useState(false);
   const [cart, setCart] = useLocalStorage("cart", []);
@@ -47,11 +48,11 @@ export default function CartC(props) {
         </div>
       )}
       <div className="d-flex justify-content-between  ">
-        <div className="align-self-center">
+        <div className="">
           <FontAwesomeIcon
             icon={faCartArrowDown}
             href="#collapseExample"
-            className="btn btn-primary"
+            className="btn btn_purple mb-2"
             data-bs-toggle="collapse"
             role="button"
             aria-expanded="false"
@@ -60,41 +61,45 @@ export default function CartC(props) {
             {" "}
           </FontAwesomeIcon>
           <div className="collapse" id="collapseExample">
-            <div className="card card-body">
+            <div className="card bord_purple  card-body bg-transparent  text-white">
               {" "}
               {(cart.length > 0 && (
-                <div>
+                <div className="border-0">
                   {" "}
-                  <ul className="list-group">
+                  <ul className="list-group ">
                     {cart.map((item) => (
-                      <li key={item.id_product} className="list-group-item">
+                      <li
+                        key={item.id_product}
+                        className="list-group-item bg-transparent border-0 text-white"
+                      >
                         {item.nome}
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    className="btn btn-primary"
-                    to={`/checkout/${cart.id}  `}
-                  >
-                    Vai al checkout
-                  </Link>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => setCart([])}
-                  >
-                    Svuota carello
-                  </button>
+                  <div className="mb-2">
+                    <Link
+                      className="btn btn_purple"
+                      to={`/checkout/${cart.id}  `}
+                    >
+                      Vai al checkout
+                    </Link>
+                  </div>
+                  <div>
+                    {" "}
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => setCart([])}
+                    >
+                      Svuota carello
+                    </button>{" "}
+                  </div>
                 </div>
               )) || <p>Il carrello è vuoto</p>}{" "}
             </div>
           </div>
         </div>
         <div>
-          <button
-            onClick={addToCart}
-            type="button"
-            className="btn btn-primary "
-          >
+          <button onClick={addToCart} type="button" className="btn btn_purple ">
             Aggiungi al carrello
           </button>
         </div>

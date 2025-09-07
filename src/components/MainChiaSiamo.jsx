@@ -8,11 +8,7 @@ export default function MainChiSiamo() {
           <div className="row">
             <div className="col d-flex flex-wrap gap-3 ">
               <div className="col col-12  col-lg-4">
-                <img
-                  className="w-100"
-                  src="https://picsum.photos/seed/picsum/200/300"
-                  alt=""
-                />
+                <img className="w-100" src="/ChiSiamo.jpg" alt="" />
               </div>
               <div className="col col-12 col-lg-6">
                 <h2>Cos'è Elo Boost Pc</h2>

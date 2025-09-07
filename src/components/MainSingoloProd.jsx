@@ -21,7 +21,7 @@ export default function MainSingoloProd() {
   return (
     <>
       <main className="my-5">
-        <div className="container">
+        <div className="container-fluid">
           <CartC prodotto={prodotto} key={prodotto.id}></CartC>
           <h2 className="text-center my-5">Prodotto singolo</h2>
           <div className="row">

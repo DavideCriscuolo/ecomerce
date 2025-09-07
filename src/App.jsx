@@ -6,6 +6,7 @@ import Prodotti from "./pages/Prodotti";
 import ProdottoSingolo from "./pages/ProdottoSingolo";
 import Checkout from "./pages/Checkout";
 import PageAdmin from "./pages/PageAdmin";
+import PageAddProduct from "./pages/PageAddProduct";
 function App() {
   return (
     <>
@@ -19,6 +20,11 @@ function App() {
             <Route path="/prodotto/:id" element={<ProdottoSingolo />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/admin" element={<PageAdmin />} />
+            <Route
+              path="/admin/aggiungi-prodotto"
+              element={<PageAddProduct />}
+            ></Route>
+            <Route path="*" element={<h1>404</h1>} />
           </Route>
         </Routes>
       </BrowserRouter>

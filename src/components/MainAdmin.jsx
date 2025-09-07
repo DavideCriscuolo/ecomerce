@@ -1,6 +1,8 @@
 import "./../scss/MainAdmin.scss";
 import { useState } from "react";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import SidebarAdmin from "./SidebarAdmin";
 export default function MainAdmin() {
   const [prodotti, setProdotti] = useState([]);
 
@@ -16,15 +18,9 @@ export default function MainAdmin() {
   return (
     <main>
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-xxl-2">
-            <div className="border border-1">
-              <ul className="list-unstyled">
-                <li>Ciao</li>
-                <li>ciao</li>
-                <li>ciao</li>
-              </ul>
-            </div>
+        <div className="row h-100">
+          <div className="col-xxl-2 ">
+            <SidebarAdmin />
           </div>
           <div className="col-xxl-10 p-3">
             <div className="text-center">
@@ -33,7 +29,6 @@ export default function MainAdmin() {
             </div>
             <div>
               <h3> Tutti i prodotti nel tuo e-commerce</h3>
-
               <div className="table-responsive">
                 <table className="table table-hover table-dark table-bordered border-white  ">
                   <thead>

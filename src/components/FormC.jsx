@@ -1,47 +1,48 @@
 import { useState } from "react";
 export default function FormC(props) {
+  const [orderSuccess, setOrderSuccess] = useState("");
   const [formData, setFormData] = useState({
-    prezzo_tot: 0,
     nome: "",
     cognome: "",
     email: "",
     indirizzo: "",
   });
-
-  const prezzo_tot = props.prodotto.prezzo;
-
-  formData.prezzo_tot = prezzo_tot;
-
+  const prodotti = JSON.parse(localStorage.getItem("cart")) || [];
   function effetuaOrdine(e) {
     e.preventDefault();
-    const url = import.meta.env.VITE_URL_ORDINE + props.prodotto.id;
+    console.log(formData, prodotti);
+
+    const url = import.meta.env.VITE_URL_ORDINE;
 
     fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
-    }).then((response) => {
-      if (response.ok) {
-        console.log(formData);
-        alert("ordine effettuato");
-        setFormData({
-          prezzo_tot: 0,
-          nome: "",
-          cognome: "",
-          email: "",
-          indirizzo: "",
-        });
-      }
-    });
+      body: JSON.stringify({ cliente: formData, prodotti }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setOrderSuccess(true);
+      });
   }
 
   return (
     <>
+      {orderSuccess === true && (
+        <div className="alert alert-success" role="alert">
+          <h5>Ordine effettuato con successo </h5>
+        </div>
+      )}
+      {orderSuccess === false && (
+        <div className="alert alert-danger" role="alert">
+          <h5> Ordine non andato a buon fine</h5>
+        </div>
+      )}
       <form action="" onSubmit={effetuaOrdine}>
         <div className="mb-3">
-          <label for="" className="form-label">
+          <label htmlFor="" className="form-label">
             Nome
           </label>
           <input
@@ -58,7 +59,7 @@ export default function FormC(props) {
           />
         </div>
         <div className="mb-3">
-          <label for="" className="form-label">
+          <label htmlFor="" className="form-label">
             Cognome
           </label>
           <input
@@ -75,7 +76,7 @@ export default function FormC(props) {
           />
         </div>
         <div className="mb-3">
-          <label for="" className="form-label">
+          <label htmlFor="" className="form-label">
             email
           </label>
           <input
@@ -92,7 +93,7 @@ export default function FormC(props) {
           />
         </div>
         <div className="mb-3">
-          <label for="" className="form-label">
+          <label htmlFor="" className="form-label">
             Indirizzo
           </label>
           <input

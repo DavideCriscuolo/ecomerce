@@ -22,7 +22,7 @@ export default function MainSingoloProd() {
     <>
       <main className="my-5">
         <div className="container">
-          <CartC prodotto={prodotto}></CartC>
+          <CartC prodotto={prodotto} key={prodotto.id}></CartC>
           <h2 className="text-center my-5">Prodotto singolo</h2>
           <div className="row">
             <div className="col">

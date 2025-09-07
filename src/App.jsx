@@ -5,6 +5,7 @@ import ChiSiamo from "./pages/ChiSiamo";
 import Prodotti from "./pages/Prodotti";
 import ProdottoSingolo from "./pages/ProdottoSingolo";
 import Checkout from "./pages/Checkout";
+import PageAdmin from "./pages/PageAdmin";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
             <Route path="/prodotti" element={<Prodotti />} />
             <Route path="/prodotto/:id" element={<ProdottoSingolo />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
+            <Route path="/admin" element={<PageAdmin />} />
           </Route>
         </Routes>
       </BrowserRouter>

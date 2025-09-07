@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { useLocalStorage } from "react-use";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 export default function CartC(props) {
+  const [aggiunto, setAggiunto] = useState(false);
   const [cart, setCart] = useLocalStorage("cart", []);
   function addToCart() {
     const prodottoDaAggiungere = {
@@ -10,25 +12,12 @@ export default function CartC(props) {
       nome: props.prodotto.nome,
       prezzo: props.prodotto.prezzo,
       img: props.prodotto.img,
-      case: props.prodotto.case,
       descrizione: props.prodotto.descrizione,
-      formato_case: props.prodotto.formato_case,
-      gb_ram: props.prodotto.gb_ram,
-      ram: props.prodotto.ram,
-      processore: props.prodotto.processore,
-      dissipatore: props.prodotto.dissipatore,
-      mobo: props.prodotto.mobo,
-      scheda_video: props.prodotto.scheda_video,
-      gb_vram: props.prodotto.gb_vram,
-      alimentatore: props.prodotto.alimentatore,
-      archiviazione: props.prodotto.archiviazione,
-      gb_archiviazione: props.prodotto.gb_archiviazione,
-      ventole: props.prodotto.ventole,
-
       quantita: 1,
     };
 
     const exists = cart.find(
+      // verifica se il prodotto già esiste nel carrello e incrementa la quantità
       (p) => p.id_product === prodottoDaAggiungere.id_product
     );
     if (exists) {
@@ -40,12 +29,23 @@ export default function CartC(props) {
         )
       );
     } else {
+      // se il prodotto non esiste nel carrello, lo aggiunge
       setCart([...cart, prodottoDaAggiungere]);
     }
+
+    setAggiunto(true);
+    setTimeout(() => {
+      setAggiunto(false);
+    }, 1500);
   }
 
   return (
     <>
+      {aggiunto && (
+        <div className="alert alert-success" role="alert">
+          Prodotto aggiunto al carrello
+        </div>
+      )}
       <div className="d-flex justify-content-between  ">
         <div className="align-self-center">
           <FontAwesomeIcon

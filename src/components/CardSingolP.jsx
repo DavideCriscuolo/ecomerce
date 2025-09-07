@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function CardSingolP({ pc }) {
   return (
-    <div className="card h-100 mb-3">
+    <div className="card mb-3">
       <div className="row g-0">
         <div className="col-md-4 p-3">
           <img
@@ -30,26 +30,68 @@ export default function CardSingolP({ pc }) {
                 pc.gb_archiviazione &&
                 pc.ventole && (
                   <ul className="list-unstyled list-group list-group-flush ">
-                    <li className="list-group-item"> {pc.case}</li>
-                    <li className="list-group-item"> {pc.formato_case}</li>
-                    <li className="list-group-item"> {pc.gb_ram}GB</li>
-                    <li className="list-group-item"> {pc.ram}</li>
-                    <li className="list-group-item"> {pc.processore}</li>
-                    <li className="list-group-item"> {pc.dissipatore}</li>
-                    <li className="list-group-item"> {pc.mobo}</li>
-                    <li className="list-group-item"> {pc.scheda_video}</li>
-                    <li className="list-group-item"> {pc.gb_vram}GB Vram</li>
-                    <li className="list-group-item"> {pc.alimentatore}</li>
-                    <li className="list-group-item"> {pc.archiviazione} </li>
                     <li className="list-group-item">
                       {" "}
-                      {pc.gb_archiviazione}GB
+                      <strong>Case:</strong> {pc.case}
                     </li>
-                    <li className="list-group-item"> {pc.ventole}</li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Formato Case:</strong> {pc.formato_case}
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Ram:</strong> {pc.gb_ram}GB
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Tipo di Ram:</strong> {pc.ram}
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Processore:</strong> {pc.processore}
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Dissipatore:</strong> {pc.dissipatore}
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Scheda Madre:</strong> {pc.mobo}
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Scheda Video:</strong> {pc.scheda_video}
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Vram:</strong> {pc.gb_vram}GB Vram
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Alimentatore:</strong> {pc.alimentatore}
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Archiviazione:</strong> {pc.archiviazione}{" "}
+                    </li>
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>GB Archiviazione:</strong> {pc.gb_archiviazione}GB
+                    </li>
+
+                    <li className="list-group-item">
+                      {" "}
+                      <strong>Ventole:</strong> {pc.ventole}
+                    </li>
+                    <li className="list-group-item">
+                      <strong>Prezzo:</strong> {pc.prezzo}€
+                    </li>
                   </ul>
                 )}
-              <span>Prezzo: {pc.prezzo}</span>
             </div>
+            {pc.quantita > 0 && (
+              <span>Quantità Selezionata: {pc.quantita}</span>
+            )}
           </div>
         </div>
       </div>

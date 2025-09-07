@@ -11,6 +11,7 @@ export default function CardProdotti({ pc }) {
             </Link>
             <h4 className="card-title">{pc.nome}</h4>
             <p className="card-text">{pc.descrizione}</p>
+            <p className="card-text">{pc.prezzo}€</p>
           </div>
         </div>
       </div>

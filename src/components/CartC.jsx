@@ -77,10 +77,7 @@ export default function CartC(props) {
                     ))}
                   </ul>
                   <div className="mb-2">
-                    <Link
-                      className="btn btn_purple"
-                      to={`/checkout/${cart.id}  `}
-                    >
+                    <Link className="btn btn_purple" to={`/checkout`}>
                       Vai al checkout
                     </Link>
                   </div>

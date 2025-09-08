@@ -13,6 +13,7 @@ export default function MainCheckout() {
   }
 
   console.log(prezzo_totale); // stampa il totale
+  //creare slug con nome prodotto
 
   return (
     <>

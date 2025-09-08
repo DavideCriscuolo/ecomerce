@@ -17,7 +17,10 @@ function App() {
 
             <Route path="/chi-siamo" element={<ChiSiamo />} />
             <Route path="/prodotti" element={<Prodotti />} />
-            <Route path="/prodotto/:id" element={<ProdottoSingolo />}></Route>
+            <Route
+              path="/prodotto/:id/:slug"
+              element={<ProdottoSingolo />}
+            ></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/admin" element={<PageAdmin />} />
             <Route

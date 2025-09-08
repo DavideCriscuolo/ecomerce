@@ -8,9 +8,9 @@ export default function FormC(props) {
     indirizzo: "",
   });
   const prodotti = JSON.parse(localStorage.getItem("cart")) || [];
+
   function effetuaOrdine(e) {
     e.preventDefault();
-    console.log(formData, prodotti);
 
     const url = import.meta.env.VITE_URL_ORDINE;
 
@@ -19,11 +19,14 @@ export default function FormC(props) {
       headers: {
         "Content-Type": "application/json",
       },
+
       body: JSON.stringify({ cliente: formData, prodotti }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        if (data.err) return setOrderSuccess(false);
+        console.log(formData, prodotti);
         setOrderSuccess(true);
       });
   }

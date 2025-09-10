@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCart } from "react-use-cart";
 export default function FormC(props) {
   const [orderSuccess, setOrderSuccess] = useState("");
   const [formData, setFormData] = useState({
@@ -7,7 +8,9 @@ export default function FormC(props) {
     email: "",
     indirizzo: "",
   });
-  const prodotti = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const prodotti = useCart().items;
+  console.log(prodotti);
 
   function effetuaOrdine(e) {
     e.preventDefault();

@@ -7,29 +7,32 @@ import ProdottoSingolo from "./pages/ProdottoSingolo";
 import Checkout from "./pages/Checkout";
 import PageAdmin from "./pages/PageAdmin";
 import PageAddProduct from "./pages/PageAddProduct";
+import { CartProvider } from "react-use-cart";
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route Component={DefaultLayout}>
-            <Route path="/" element={<Home />} />
+        <CartProvider>
+          <Routes>
+            <Route Component={DefaultLayout}>
+              <Route path="/" element={<Home />} />
 
-            <Route path="/chi-siamo" element={<ChiSiamo />} />
-            <Route path="/prodotti" element={<Prodotti />} />
-            <Route
-              path="/prodotto/:id/:slug"
-              element={<ProdottoSingolo />}
-            ></Route>
-            <Route path="/checkout" element={<Checkout />}></Route>
-            <Route path="/admin" element={<PageAdmin />} />
-            <Route
-              path="/admin/aggiungi-prodotto"
-              element={<PageAddProduct />}
-            ></Route>
-            <Route path="*" element={<h1>404</h1>} />
-          </Route>
-        </Routes>
+              <Route path="/chi-siamo" element={<ChiSiamo />} />
+              <Route path="/prodotti" element={<Prodotti />} />
+              <Route
+                path="/prodotto/:id/:slug"
+                element={<ProdottoSingolo />}
+              ></Route>
+              <Route path="/checkout" element={<Checkout />}></Route>
+              <Route path="/admin" element={<PageAdmin />} />
+              <Route
+                path="/admin/aggiungi-prodotto"
+                element={<PageAddProduct />}
+              ></Route>
+              <Route path="*" element={<h1>404</h1>} />
+            </Route>
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
     </>
   );

@@ -89,9 +89,12 @@ export default function CardSingolP({ pc }) {
                   </ul>
                 )}
             </div>
-            {pc.quantita > 0 && (
-              <span>Quantità Selezionata: {pc.quantita}</span>
+            {pc.quantity > 0 && (
+              <span>Quantità Selezionata: {pc.quantity}</span>
             )}
+            <li className="list-group-item  bg-transparent text-white">
+              <strong>Prezzo Singolo Prodotto:</strong> {pc.price}€
+            </li>
           </div>
         </div>
       </div>

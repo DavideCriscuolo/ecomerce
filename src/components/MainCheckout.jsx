@@ -1,56 +1,41 @@
 import CardSingolP from "./CardSingolP";
-
+import { useCart } from "react-use-cart";
 import FormC from "./FormC";
+
 export default function MainCheckout() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const { items: cart, emptyCart } = useCart();
 
-  let prezzo_totale = 0;
-
-  for (let i = 0; i < cart.length; i++) {
-    const item = cart[i];
-    const quantita = item.quantita || 1; // se non c'è quantità, metti 1
-    prezzo_totale += item.prezzo * quantita;
-  }
-
-  console.log(prezzo_totale); // stampa il totale
-  //creare slug con nome prodotto
+  console.log(cart);
+  const prezzo_totale = cart.reduce(
+    (tot, item) => tot + item.price * (item.quantity || 1),
+    0
+  );
 
   return (
-    <>
-      <main className="my-5">
-        <h2 className="text-center">Checkout</h2>
-        <div className="container">
-          <div className="mb-3">
-            <button
-              className="btn btn-danger"
-              onClick={() => {
-                localStorage.removeItem("cart");
-                window.location.reload();
-              }}
-            >
-              Svuota il carrello
-            </button>
+    <main className="my-5">
+      <h2 className="text-center">Checkout</h2>
+      <div className="container">
+        <div className="mb-3">
+          <button className="btn btn-danger" onClick={emptyCart}>
+            Svuota il carrello
+          </button>
+        </div>
+
+        <div className="row row-cols-1 row-cols-md-2">
+          <div className="col d-flex flex-wrap">
+            {cart.map((item) => (
+              <div key={item.id}>
+                <CardSingolP pc={item} />
+              </div>
+            ))}
           </div>
 
-          <div className="row row-cols-1 row-cols-md-2">
-            <div className="col d-flex flex-wrap">
-              {cart.map((item) => (
-                <div>
-                  <CardSingolP pc={item} key={item.id}></CardSingolP>
-                </div>
-              ))}
-            </div>
-            <div className="col">
-              <h3>Dati per il pagamaneto</h3>
-              <FormC
-                prodotto={cart}
-                key={cart.id}
-                prezzo_totale={prezzo_totale}
-              ></FormC>
-            </div>
+          <div className="col">
+            <h3>Dati per il pagamento</h3>
+            <FormC prodotto={cart} prezzo_totale={prezzo_totale} />
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 }

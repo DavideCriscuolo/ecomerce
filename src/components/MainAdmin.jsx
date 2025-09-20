@@ -6,7 +6,7 @@ import SidebarAdmin from "./SidebarAdmin";
 export default function MainAdmin() {
   const [prodotti, setProdotti] = useState([]);
 
-  const url = import.meta.env.VITE_URL_PRODOTTI;
+  const url = import.meta.env.VITE_URL_INDEX_PRODOTTI;
   function gnrProdotti() {
     fetch(url)
       .then((response) => response.json())
@@ -58,7 +58,7 @@ export default function MainAdmin() {
                         <tr class="">
                           <td scope="row">{pc.nome}</td>
                           <td scope="row">{pc.descrizione}</td>
-                          <td scope="row">{pc.case}</td>
+                          <td scope="row">{pc.casePc}</td>
                           <td scope="row">{pc.formato_case}</td>
                           <td scope="row">{pc.gb_ram}</td>
                           <td scope="row">{pc.processore}</td>

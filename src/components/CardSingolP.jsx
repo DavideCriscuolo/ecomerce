@@ -16,7 +16,7 @@ export default function CardSingolP({ pc }) {
             <h5 className="card-title">{pc.nome}</h5>
             <p className="card-text">{pc.descrizione}</p>
             <div>
-              {pc.case &&
+              {pc.casePc &&
                 pc.formato_case &&
                 pc.gb_ram &&
                 pc.ram &&
@@ -32,7 +32,7 @@ export default function CardSingolP({ pc }) {
                   <ul className="list-unstyled list-group list-group-flush">
                     <li className="list-group-item bg-transparent  text-white">
                       {" "}
-                      <strong>Case:</strong> {pc.case}
+                      <strong>Case:</strong> {pc.casePc}
                     </li>
                     <li className="list-group-item  bg-transparent text-white">
                       {" "}
@@ -92,9 +92,7 @@ export default function CardSingolP({ pc }) {
             {pc.quantity > 0 && (
               <span>Quantità Selezionata: {pc.quantity}</span>
             )}
-            <li className="list-group-item  bg-transparent text-white">
-              <strong>Prezzo Singolo Prodotto:</strong> {pc.price}€
-            </li>
+            {pc.price && <p>Prezzo {pc.price}€</p>}
           </div>
         </div>
       </div>

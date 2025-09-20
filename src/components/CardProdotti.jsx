@@ -14,7 +14,7 @@ export default function CardProdotti({ pc }) {
           <div className="card-body  ">
             <Link to={`/prodotto/${pc.id}/${slug}`}>
               {" "}
-              <img className="card-img-top p-5" src={pc.img} alt="" />{" "}
+              <img className="card-img-top " src={pc.img} alt="" />{" "}
             </Link>
             <h4 className="card-title">{pc.nome}</h4>
             <p className="card-text">{pc.descrizione}</p>

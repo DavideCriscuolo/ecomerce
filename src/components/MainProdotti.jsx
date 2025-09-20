@@ -11,8 +11,7 @@ export default function MainProdotti() {
   });
 
   const urlProdotti = import.meta.env.VITE_URL_PRODOTTI;
-  function gnrProdotti(e) {
-    e.preventDefault();
+  function gnrProdotti() {
     fetch(urlProdotti, {
       method: "POST",
       headers: {
@@ -35,7 +34,13 @@ export default function MainProdotti() {
           <div className="row">
             <div className="col-12  col-sm-12 col-md-4  col-xl-3 py-5  ">
               <div>
-                <form action="" onSubmit={gnrProdotti}>
+                <form
+                  action=""
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    gnrProdotti();
+                  }}
+                >
                   <div class="mb-3">
                     <div class="mb-3">
                       <label for="" class="form-label">
@@ -73,35 +78,35 @@ export default function MainProdotti() {
                         class="form-control mt-2"
                         aria-describedby="helpId"
                         placeholder={
-                          filterd.filtro1 === "Nome"
+                          filterd.filtro1 === "nome"
                             ? "Inserisci il nome del prodotto"
-                            : filterd.filtro1 === "Prezzo"
+                            : filterd.filtro1 === "prezzo"
                             ? "Inserisci il prezzo"
-                            : filterd.filtro1 === "Formato Case"
+                            : filterd.filtro1 === "formato_case"
                             ? "Inserisci il formato della case"
-                            : filterd.filtro1 === "Case"
+                            : filterd.filtro1 === "case"
                             ? "Inserisci il tipo di case"
-                            : filterd.filtro1 === "Scheda Video"
+                            : filterd.filtro1 === "scheda_video"
                             ? "Inserisci la scheda video"
-                            : filterd.filtro1 === "GB VRAM"
+                            : filterd.filtro1 === "gb_vram"
                             ? "Inserisci il GB VRAM"
-                            : filterd.filtro1 === "Processore"
+                            : filterd.filtro1 === "processore"
                             ? "Inserisci il processore"
-                            : filterd.filtro1 === "Dissipatore"
+                            : filterd.filtro1 === "dissipatore"
                             ? "Inserisci il dissipatore"
-                            : filterd.filtro1 === "Mobo"
+                            : filterd.filtro1 === "mobo"
                             ? "Inserisci il mobo"
-                            : filterd.filtro1 === "Alimentatore"
+                            : filterd.filtro1 === "alimentatore"
                             ? "Inserisci l'alimentatore"
-                            : filterd.filtro1 === "RAM"
+                            : filterd.filtro1 === "ram"
                             ? "Inserisci il RAM"
-                            : filterd.filtro1 === "GB RAM"
+                            : filterd.filtro1 === "gb_ram"
                             ? "Inserisci il GB RAM"
-                            : filterd.filtro1 === "Archiviazione"
+                            : filterd.filtro1 === "archiviazione"
                             ? "Inserisci il tipo di archiviazione"
-                            : filterd.filtro1 === "GB Archiviazione"
+                            : filterd.filtro1 === "gb_archiviazione"
                             ? "Inserisci il GB Archiviazione"
-                            : filterd.filtro1 === "Ventole"
+                            : filterd.filtro1 === "ventole"
                             ? "Inserisci il numero di ventole"
                             : " Seleziona un filtro"
                         }
@@ -150,35 +155,35 @@ export default function MainProdotti() {
                         id="nome"
                         aria-describedby="helpId"
                         placeholder={
-                          filterd.filtro2 === "Nome"
+                          filterd.filtro2 === "nome"
                             ? "Inserisci il nome del prodotto"
-                            : filterd.filtro2 === "Prezzo"
+                            : filterd.filtro2 === "prezzo"
                             ? "Inserisci il prezzo"
-                            : filterd.filtro2 === "Formato Case"
+                            : filterd.filtro2 === "formato_case"
                             ? "Inserisci il formato della case"
-                            : filterd.filtro2 === "Case"
+                            : filterd.filtro2 === "case"
                             ? "Inserisci il tipo di case"
-                            : filterd.filtro2 === "Scheda Video"
+                            : filterd.filtro2 === "scheda_video"
                             ? "Inserisci la scheda video"
-                            : filterd.filtro2 === "GB VRAM"
+                            : filterd.filtro2 === "gb_vram"
                             ? "Inserisci il GB VRAM"
-                            : filterd.filtro2 === "Processore"
+                            : filterd.filtro2 === "processore"
                             ? "Inserisci il processore"
-                            : filterd.filtro2 === "Dissipatore"
+                            : filterd.filtro2 === "dissipatore"
                             ? "Inserisci il dissipatore"
-                            : filterd.filtro2 === "Mobo"
+                            : filterd.filtro2 === "mobo"
                             ? "Inserisci il mobo"
-                            : filterd.filtro2 === "Alimentatore"
+                            : filterd.filtro2 === "alimentatore"
                             ? "Inserisci l'alimentatore"
-                            : filterd.filtro2 === "RAM"
+                            : filterd.filtro2 === "ram"
                             ? "Inserisci il RAM"
-                            : filterd.filtro2 === "GB RAM"
+                            : filterd.filtro2 === "gb_ram"
                             ? "Inserisci il GB RAM"
-                            : filterd.filtro2 === "Archiviazione"
+                            : filterd.filtro2 === "archiviazione"
                             ? "Inserisci il tipo di archiviazione"
-                            : filterd.filtro2 === "GB Archiviazione"
+                            : filterd.filtro2 === "gb_archiviazione"
                             ? "Inserisci il GB Archiviazione"
-                            : filterd.filtro2 === "Ventole"
+                            : filterd.filtro2 === "ventole"
                             ? "Inserisci il numero di ventole"
                             : " Seleziona un filtro"
                         }
@@ -193,13 +198,15 @@ export default function MainProdotti() {
                       />
                     </div>
                   </div>
-                  <button type="submit">Cerca</button>
+                  <button type="submit" className="btn btn-outline-success">
+                    Cerca
+                  </button>
                 </form>
               </div>
             </div>
             <div className="col-12 col-sm-12 col-md-8 col-xl-9">
               <h2 className="text-center my-5">I nostri prodotti</h2>
-              <div className="row row-cols-1 row-cols-md-3 g-3 ">
+              <div className="row row-cols-1 row-cols-md-2  row-cols-xl-3 g-3 ">
                 {prodotti.length === 0 && (
                   <h3 className="text-center">Non ci sono prodotti</h3>
                 )}

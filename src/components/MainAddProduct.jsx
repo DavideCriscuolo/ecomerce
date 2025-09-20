@@ -3,46 +3,101 @@ import { useState } from "react";
 export default function MainAddProduct() {
   const [sucess, setSucess] = useState(false);
 
-  const [formData, setFormData] = useState([
-    {
-      nome: "",
-      descrizione: "",
-      casePc: "",
-      formato_case: "",
-      gb_ram: 0,
-      processore: "",
-      dissipatore: "",
-      ram: "",
-      mobo: "",
-      scheda_video: "",
-      gb_vram: 0,
-      alimentatore: "",
-      archiviazione: "",
-      gb_archiviazione: 0,
-      ventole: "",
-      img: "",
-      tag: "",
-      prezzo: 0,
-      slug: "",
-    },
-  ]);
+  const [error, setError] = useState(false);
+  const [datoMancate, setDatoMancate] = useState("");
+  const [formData, setFormData] = useState({
+    nome: "",
+    descrizione: "",
+    casePc: "",
+    formato_case: "",
+    gb_ram: 0,
+    processore: "",
+    dissipatore: "",
+    ram: "",
+    mobo: "",
+    scheda_video: "",
+    gb_vram: 0,
+    alimentatore: "",
+    archiviazione: "",
+    gb_archiviazione: 0,
+    ventole: "",
+    img: "",
+    tag: "",
+    prezzo: 0,
+    slug: "",
+  });
 
   const urlAddProduct = import.meta.env.VITE_URL_ADD_PRODUCT;
 
   function addProduct() {
+    if (formData.name === "") {
+      setDatoMancate("nome");
+    }
+    if (formData.descrizione === "") {
+      setDatoMancate("descrizione");
+    }
+    if (formData.casePc === "") {
+      setDatoMancate("case");
+    }
+    if (formData.formato_case === "") {
+      setDatoMancate("formato_case");
+    }
+    if (formData.gb_ram === 0 && formData.gb_ram <= 0) {
+      setDatoMancate("gb_ram");
+    }
+    if (formData.processore === "") {
+      setDatoMancate("processore");
+    }
+    if (formData.dissipatore === "") {
+      setDatoMancate("dissipatore");
+    }
+    if (formData.ram === "") {
+      setDatoMancate("ram");
+    }
+    if (formData.mobo === "") {
+      setDatoMancate("mobo");
+    }
+    if (formData.scheda_video === "") {
+      setDatoMancate("scheda_video");
+    }
+    if (formData.gb_vram === 0 || formData.gb_vram <= 0) {
+      setDatoMancate("gb_vram");
+    }
+    if (formData.alimentatore === "") {
+      setDatoMancate("alimentatore");
+    }
+    if (formData.archiviazione === "") {
+      setDatoMancate("archiviazione");
+    }
+    if (formData.gb_archiviazione === 0 || formData.gb_archiviazione <= 0) {
+      setDatoMancate("gb_archiviazione");
+    }
+    if (formData.ventole === "") {
+      setDatoMancate("ventole");
+    }
+    if (formData.img === "") {
+      setDatoMancate("img");
+    }
+
+    if (formData.prezzo === 0 || formData.prezzo <= 0) {
+      setDatoMancate("prezzo");
+    }
+    if (formData.slug === "") {
+      setDatoMancate("slug");
+    }
+
     fetch(urlAddProduct, {
       method: "Post",
-      contentType: "Application/json",
+      headers: {
+        "Content-Type": "Application/json",
+      },
       body: JSON.stringify(formData),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setSucess(true);
-
-        setTimeout(() => {
-          setSucess(false);
-        }, 3000);
+        if (data.err) return setError(true);
+        setError(false);
       });
   }
 
@@ -60,6 +115,11 @@ export default function MainAddProduct() {
                   Prodotto aggiunto con successo
                 </div>
               )}
+              {error && (
+                <div className="alert alert-danger" role="alert">
+                  {`Prodotto non inserito manca il dato : ${datoMancate}`}
+                </div>
+              )}
               <div className="text-center">
                 <h2>Qui puoi aggiungere un nuovo prodotto</h2>
               </div>
@@ -73,17 +133,17 @@ export default function MainAddProduct() {
                         addProduct();
                       }}
                       className=""
-                      action=""
+                      noValidate
+                      method="post"
                     >
                       <div className="mb-3">
-                        <label for="" className="form-label">
-                          Name
-                        </label>
+                        <label className="form-label">Name</label>
 
                         <input
                           type="text"
                           name=""
-                          id=""
+                          id="validationCustom01"
+                          required
                           className="form-control"
                           placeholder=""
                           aria-describedby="helpId"
@@ -95,8 +155,8 @@ export default function MainAddProduct() {
                           }}
                           value={formData.nome}
                         />
+                        <div className="invalid-feedback">aaa</div>
                       </div>
-
                       <div className="mb-3">
                         <label for="" className="form-label">
                           Case
@@ -279,7 +339,7 @@ export default function MainAddProduct() {
                           className="form-control"
                           placeholder=""
                           aria-describedby="helpId"
-                          onRateChange={(e) =>
+                          onChange={(e) =>
                             setFormData({
                               ...formData,
                               alimentatore: e.target.value,
@@ -319,7 +379,7 @@ export default function MainAddProduct() {
                           className="form-control"
                           placeholder=""
                           aria-describedby="helpId"
-                          onRateChange={(e) =>
+                          onChange={(e) =>
                             setFormData({
                               ...formData,
                               gb_archiviazione: e.target.value,
@@ -382,7 +442,44 @@ export default function MainAddProduct() {
                           value={formData.prezzo}
                         />
                       </div>
-
+                      <div className="mb-3">
+                        <label for="" className="form-label">
+                          Slug
+                        </label>
+                        <input
+                          type="text"
+                          name=""
+                          id=""
+                          className="form-control"
+                          placeholder=""
+                          aria-describedby="helpId"
+                          onChange={(e) =>
+                            setFormData({ ...formData, slug: e.target.value })
+                          }
+                          value={formData.slug}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id=""
+                            onChange={(e) => {
+                              setFormData({
+                                ...formData,
+                                tag: e.target.checked ? "more" : "",
+                              });
+                            }}
+                            checked={formData.tag === "more"}
+                          />
+                          <label class="form-check-label" for="">
+                            {" "}
+                            Best seller{" "}
+                          </label>
+                        </div>
+                      </div>
                       <div className="mb-3">
                         <div class="form-floating">
                           <textarea
@@ -402,7 +499,7 @@ export default function MainAddProduct() {
                           ></textarea>
                           <label for="floatingTextarea2">Comments</label>
                         </div>
-                      </div>
+                      </div>{" "}
                       <button type="submit" className="btn btn-primary">
                         Invia
                       </button>

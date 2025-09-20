@@ -29,10 +29,12 @@ export default function MainAdmin() {
             </div>
             <div>
               <h3> Tutti i prodotti nel tuo e-commerce</h3>
+
               <div className="table-responsive">
                 <table className="table table-hover table-dark table-bordered border-white  ">
                   <thead>
                     <tr>
+                      <th scope="col">id</th>
                       <th scope="col">Nome</th>
                       <th scope="col">Descrizione</th>
                       <th scope="col">Case</th>
@@ -50,12 +52,15 @@ export default function MainAdmin() {
                       <th scope="col">ventole</th>
                       <th scope="col">img</th>
                       <th scope="col">prezzo</th>
+                      <th scope="col">tag</th>
+                      <th scope="col">slug</th>
                     </tr>
                   </thead>
                   {prodotti.map((pc) => {
                     return (
                       <tbody>
                         <tr class="">
+                          <td scope="row">{pc.id}</td>
                           <td scope="row">{pc.nome}</td>
                           <td scope="row">{pc.descrizione}</td>
                           <td scope="row">{pc.casePc}</td>
@@ -73,6 +78,8 @@ export default function MainAdmin() {
                           <td scope="row">{pc.ventole}</td>
                           <td scope="row">{pc.img}</td>
                           <td scope="row">{pc.prezzo}</td>
+                          <td scope="row">{pc.tag}</td>
+                          <td scope="row">{pc.slug}</td>
                         </tr>
                       </tbody>
                     );

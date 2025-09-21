@@ -111,7 +111,7 @@ export default function FiltroC(props) {
               <option value="archiviazione">Archiviazione</option>
               <option value="gb_archiviazione">GB Archiviazione</option>
               <option value="ventole">Ventole</option>
-              <option value="case">Case</option>
+              <option value="casePc">Case</option>
               <option value="formato_case">Formato Case</option>
               <option value="ventole">Ventole</option>
               <option value="prezzo">Prezzo</option>
@@ -127,7 +127,7 @@ export default function FiltroC(props) {
                   ? "Inserisci il prezzo"
                   : filterd.filtro2 === "formato_case"
                   ? "Inserisci il formato della case"
-                  : filterd.filtro2 === "case"
+                  : filterd.filtro2 === "casePc"
                   ? "Inserisci il tipo di case"
                   : filterd.filtro2 === "scheda_video"
                   ? "Inserisci la scheda video"

@@ -3,16 +3,31 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import SidebarAdmin from "./SidebarAdmin";
+import FiltroC from "./FiltroC";
 export default function MainAdmin() {
   const [prodotti, setProdotti] = useState([]);
+  const [filterd, setFiltered] = useState({
+    filtro1: "",
+    filtro2: "",
+    valore1: "",
+    valore2: "",
+  });
 
-  const url = import.meta.env.VITE_URL_INDEX_PRODOTTI;
+  const urlProdotti = import.meta.env.VITE_URL_PRODOTTI;
   function gnrProdotti() {
-    fetch(url)
+    fetch(urlProdotti, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(filterd),
+    })
       .then((response) => response.json())
-      .then((data) => setProdotti(data));
+      .then((data) => {
+        console.log(data);
+        setProdotti(data);
+      });
   }
-
   useEffect(gnrProdotti, []);
 
   return (
@@ -21,6 +36,11 @@ export default function MainAdmin() {
         <div className="row h-100">
           <div className="col-xxl-2 ">
             <SidebarAdmin />
+            <FiltroC
+              filterd={filterd}
+              setFiltered={setFiltered}
+              gnrProdotti={gnrProdotti}
+            ></FiltroC>
           </div>
           <div className="col-xxl-10 p-3">
             <div className="text-center">

@@ -214,7 +214,7 @@ export default function MainAddProduct() {
                 </div>
               )}
 
-              <div className="container">
+              <div className="container-fluid">
                 <div className="d-flex justify-content-center align-items-center flex-column my-3">
                   {" "}
                   <div>
@@ -243,7 +243,7 @@ export default function MainAddProduct() {
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    {sectionSelected === "Aggiungere" && ( //tramite il coditional rendering al click del bottone decidiamo che form mostrare
+                    {(sectionSelected === "Aggiungere" && ( //tramite il coditional rendering al click del bottone decidiamo che form mostrare
                       <div>
                         <h4 class="card-title">
                           Sezione per Aggiungere un nuovo prodotto
@@ -254,19 +254,25 @@ export default function MainAddProduct() {
                           addProduct={addProduct}
                         ></FormAddProduct>
                       </div>
-                    )}
-                    {sectionSelected === "Modificare" && ( //tramite il coditional rendering al click del bottone decidiamo che form mostrare
-                      <div>
-                        <h4 class="card-title">
-                          Sezione per Modificare o eliminare prodotto esistente
-                        </h4>
-                        <FormModifyProduct
-                          formDataM={formDataM}
-                          setFormDataM={setFormDataM}
-                          modifyProduct={modifyProduct}
-                        ></FormModifyProduct>
-                      </div>
-                    )}
+                    )) ||
+                      (sectionSelected === "Modificare" && (
+                        <div>
+                          <h4 class="card-title">
+                            Sezione per Modificare o eliminare prodotto
+                            esistente
+                          </h4>
+                          <FormModifyProduct
+                            formDataM={formDataM}
+                            setFormDataM={setFormDataM}
+                            modifyProduct={modifyProduct}
+                          ></FormModifyProduct>
+                        </div>
+                      )) ||
+                      (sectionSelected === "" && (
+                        <p className="text-center fw-semibold">
+                          Nessuna opzione selezionata
+                        </p>
+                      ))}
                   </div>
                 </div>
               </div>
